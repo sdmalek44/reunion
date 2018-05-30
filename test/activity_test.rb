@@ -50,4 +50,13 @@ class ActivityTest < Minitest::Test
     assert_equal 46.67, a.owed_amounts['dan']
     assert_equal expected, a.owed_amounts
   end
+
+  def test_total_cost
+    a = Activity.new('soccer', 200, 20)
+    a.add_participants('bob', 20)
+    a.add_participants('tim', 106.67)
+    a.add_participants('dan', 40)
+
+    assert_equal 260.0, a.total_cost
+  end
 end

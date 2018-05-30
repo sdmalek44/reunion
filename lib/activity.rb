@@ -15,8 +15,11 @@ class Activity
     @participants[participant] = payment
   end
 
+  def total_cost
+    @base_cost + (@cost_per_participant.to_f * @participants.count)
+  end
+
   def calculate_fair_share
-    total_cost = @base_cost.to_f + (@cost_per_participant * @participants.count)
     (total_cost / @participants.count).round(2)
   end
 

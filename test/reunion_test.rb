@@ -27,4 +27,16 @@ class ReunionTest < Minitest::Test
 
     assert_equal [soccer, cornhole], r.activities
   end
+
+  def test_total_cost_of_reunion
+    r = Reunion.new('park')
+    soccer = Activity.new('soccer', 200, 20)
+    soccer.add_participants('bob', 20)
+    soccer.add_participants('tim', 106.67)
+    cornhole = Activity.new('cornhole', 10, 5)
+    r.add_activity(soccer)
+    r.add_activity(cornhole)
+
+    assert_equal 250.0, r.total_cost
+  end
 end

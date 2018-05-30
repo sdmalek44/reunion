@@ -12,4 +12,8 @@ class Reunion
   def add_activity(activity)
     @activities << activity if activity.class == Activity
   end
+
+  def total_cost
+    @activities.inject(0.0) {|sum, activity| activity.total_cost + sum}
+  end
 end

@@ -43,9 +43,11 @@ class ActivityTest < Minitest::Test
     a.add_participants('bob', 20)
     a.add_participants('tim', 106.67)
     a.add_participants('dan', 40)
+    expected = {'bob'=>66.67, 'tim'=>-20.0, 'dan'=>46.67}
 
     assert_equal 66.67, a.owed_amounts['bob']
     assert_equal (-20.0), a.owed_amounts['tim']
     assert_equal 46.67, a.owed_amounts['dan']
+    assert_equal expected, a.owed_amounts
   end
 end

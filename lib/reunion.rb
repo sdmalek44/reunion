@@ -24,4 +24,9 @@ class Reunion
     end
     bill
   end
+
+  def print_summary
+    puts "\nOwed Amounts for #{@location} reunion"
+    breakdown.each {|name, owed| puts "#{name}: #{owed}"}
+  end
 end

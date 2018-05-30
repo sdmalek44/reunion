@@ -55,5 +55,6 @@ class ReunionTest < Minitest::Test
     expected = {'bob'=>66.67, 'tim'=>-20.0, 'dan'=>46.67, 'jim'=>0}
 
     assert_equal expected, r.breakdown
+    r.print_summary
   end
 end

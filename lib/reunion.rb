@@ -16,4 +16,12 @@ class Reunion
   def total_cost
     @activities.inject(0.0) {|sum, activity| activity.total_cost + sum}
   end
+
+  def breakdown
+    bill = {}
+    @activities.each do |activity|
+      activity.owed_amounts.each {|person, owed| bill[person] = owed}
+    end
+    bill
+  end
 end

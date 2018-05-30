@@ -19,4 +19,12 @@ class Activity
     total_cost = @base_cost.to_f + (@cost_per_participant * @participants.count)
     (total_cost / @participants.count).round(2)
   end
+
+  def owed_amounts
+    owed = {}
+    @participants.each do |participant, paid|
+        owed[participant] = calculate_fair_share - paid
+    end
+    owed
+  end
 end

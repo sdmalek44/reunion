@@ -37,4 +37,15 @@ class ActivityTest < Minitest::Test
 
     assert_equal 86.67, a.calculate_fair_share
   end
+
+  def test_it_calculates_each_persons_owed_amount
+    a = Activity.new('soccer', 200, 20)
+    a.add_participants('bob', 20)
+    a.add_participants('tim', 106.67)
+    a.add_participants('dan', 40)
+
+    assert_equal 66.67, a.owed_amounts['bob']
+    assert_equal (-20.0), a.owed_amounts['tim']
+    assert_equal 46.67, a.owed_amounts['dan']
+  end
 end

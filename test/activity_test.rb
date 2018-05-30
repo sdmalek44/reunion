@@ -28,4 +28,13 @@ class ActivityTest < Minitest::Test
     a.add_participants('bob', 0)
     assert_equal expected_2, a.participants
   end
+
+  def test_it_calculates_fair_share
+    a = Activity.new('soccer', 200, 20)
+    a.add_participants('bob', 0)
+    a.add_participants('tim', 0)
+    a.add_participants('dan', 0)
+
+    assert_equal 86.67, a.calculate_fair_share
+  end
 end
